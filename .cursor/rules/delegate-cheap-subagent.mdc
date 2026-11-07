@@ -1,0 +1,26 @@
+---
+description: Reminder to offload trivial self-contained chunks to a cheaper subagent
+alwaysApply: true
+---
+
+# Delegate Trivial Work
+
+When a task (esp. a phase prompt) contains mechanical, self-contained chunks
+(writing tests from a given spec, running test/lint/typecheck, scaffolding
+from an existing pattern, bulk edits), delegate them to a cheaper subagent via
+`Task` (default `model: composer-2.5-fast`) instead of doing them inline.
+
+Always delegate, without deliberating first:
+
+- the full test suite of any app or service - background
+- linters, type checkers, formatters in check mode
+- production builds of any app - background
+- infrastructure validation (`fmt -check`, `validate`, `plan` read-only)
+- broad codebase exploration - `explore`
+
+Always demand a return contract ("return ONLY failures, no logs") and tell the
+subagent not to edit files when you only want a report.
+
+Keep judgement, security-sensitive logic, and final review yourself. Full
+workflow, model table, and copy-paste recipes:
+`.cursor/skills/delegate-cheap-subagent/SKILL.md`.
