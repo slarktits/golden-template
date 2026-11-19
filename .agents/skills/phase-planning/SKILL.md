@@ -27,7 +27,7 @@ the subtask is executed (`.cursor/rules/subtask-docs.mdc`).
 |---|---|
 | `docs/PROMPTS/PHASE_N_<SLUG>/README.md` | Phase plan, from `docs/PROMPTS/_TEMPLATE_PHASE/README.md` |
 | `docs/PROMPTS/PHASE_N_<SLUG>/N.1_<Name>.md` ... | One file per subtask, from `_TEMPLATE_PHASE/N.1_Subtask_Name.md` |
-| `.cursor/rules/phase-N-<slug>.mdc` | Short phase rule, format below |
+| `.cursor/rules/phase-N-<slug>.mdc` | Short phase rule, format below. Then `make agents-sync` |
 
 `<SLUG>` is UPPER_SNAKE in the folder name, kebab-case in the rule name.
 Subtask files are `N.M_Title_Words.md`, numbered in execution order.
@@ -74,4 +74,5 @@ invariants an agent must not break. No duplicated README content.
 
 When the phase completes: move it from Pending to Completed in `project.mdc`
 with key facts and date, mark it Complete in `DEVELOPMENT_PLAN.md`, and delete
-or shrink the phase rule if its invariants are now covered elsewhere.
+or shrink the phase rule if its invariants are now covered elsewhere. Run
+`make agents-sync` after any add, edit or delete under `.cursor/rules/`.

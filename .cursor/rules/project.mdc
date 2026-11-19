@@ -7,7 +7,16 @@ alwaysApply: true
 
 Fill the sections marked TODO when the project starts. Keep this file short:
 domain detail goes into per-file rules in `.cursor/rules/*.mdc` with `globs`,
-procedures go into `.cursor/skills/*/SKILL.md`.
+procedures go into `.agents/skills/*/SKILL.md`.
+
+Agent config: `.cursor/rules/*.mdc` is the source for rules. `make agents-sync`
+regenerates `.agents/rules/` (Antigravity, OpenCode) and `.claude/rules/`
+(Claude Code). Do not edit the generated files. Skills live only in
+`.agents/skills` (`.claude/skills` is a symlink there; do not add
+`.cursor/skills`). MCP configs commit no secrets; `CONTEXT7_API_KEY` comes from
+the environment. Cursor: `.cursor/mcp.json`. Claude Code: `.mcp.json` (enabled
+in `.claude/settings.json`). OpenCode: `.opencode/opencode.jsonc`. Antigravity:
+`.agents/mcp_config.json`. Shared browser MCP is `browse` (`browse` on PATH).
 
 ## Project Overview
 TODO: one paragraph - what the product does, for whom, main domain terms.
@@ -47,7 +56,7 @@ TODO: `N: Name (key facts, YYYY-MM-DD)` per completed phase.
 
 ## Pending Phases
 TODO: phase numbers in priority order. Full plans: `docs/PROMPTS/PHASE_X/README.md`.
-Each active phase gets `.cursor/rules/phase-N-<slug>.mdc` (see `.cursor/skills/phase-planning/SKILL.md`).
+Each active phase gets `.cursor/rules/phase-N-<slug>.mdc` (see `.agents/skills/phase-planning/SKILL.md`), then `make agents-sync`.
 
 ## AI Rules
 1. Context7 MCP for library docs before implementing or writing setup steps.
@@ -58,8 +67,8 @@ Each active phase gets `.cursor/rules/phase-N-<slug>.mdc` (see `.cursor/skills/p
 6. Production-ready code only. No placeholders, no TODO stubs in delivered code.
 7. No emojis in code, docs, rules or commit messages.
 8. Never wait with `sleep`; poll status with the provider's CLI.
-9. UI changes: build variants locally, user picks, then ship. See `.cursor/skills/design-local-review/SKILL.md`.
-10. Manual steps for the user: exactly one step per turn, wait for "готово" / "ok" / "done". See `.cursor/skills/manual-execution-stepwise/SKILL.md`.
+9. UI changes: build variants locally, user picks, then ship. See `.agents/skills/design-local-review/SKILL.md`.
+10. Manual steps for the user: exactly one step per turn, wait for "готово" / "ok" / "done". See `.agents/skills/manual-execution-stepwise/SKILL.md`.
 11. Subtask docs are specs, not code. See `.cursor/rules/subtask-docs.mdc`.
 12. Ask before creating or overwriting phase prompts unless explicitly told to.
 

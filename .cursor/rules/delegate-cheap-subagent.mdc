@@ -7,8 +7,13 @@ alwaysApply: true
 
 When a task (esp. a phase prompt) contains mechanical, self-contained chunks
 (writing tests from a given spec, running test/lint/typecheck, scaffolding
-from an existing pattern, bulk edits), delegate them to a cheaper subagent via
-`Task` (default `model: composer-2.5-fast`) instead of doing them inline.
+from an existing pattern, bulk edits), delegate them to a cheaper subagent
+instead of doing them inline.
+
+Cursor agent: `Task`, default model `composer-2.5-fast` (the slug must be in
+that tool's model list). Claude, OpenCode, Antigravity: that agent's own
+subagent or task tool and the cheapest model it lists. Do not call `Task` and
+do not pass Cursor model slugs.
 
 Always delegate, without deliberating first:
 
@@ -23,4 +28,4 @@ subagent not to edit files when you only want a report.
 
 Keep judgement, security-sensitive logic, and final review yourself. Full
 workflow, model table, and copy-paste recipes:
-`.cursor/skills/delegate-cheap-subagent/SKILL.md`.
+`.agents/skills/delegate-cheap-subagent/SKILL.md`.

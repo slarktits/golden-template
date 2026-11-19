@@ -17,7 +17,7 @@
 5. Request: "Implement subtask based on @docs/PROMPTS/PHASE_1_FOUNDATION/1.1_Project_Setup.md"
 6. Complete the subtask, close it with the completion report, commit, move to the next
 
-New phase: `.cursor/skills/phase-planning/SKILL.md`.
+New phase: `.agents/skills/phase-planning/SKILL.md`.
 
 ## Phase Dependencies
 

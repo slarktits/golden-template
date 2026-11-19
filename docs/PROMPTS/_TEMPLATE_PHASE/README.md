@@ -32,7 +32,7 @@ Which subtasks can run in any order after which.
 
 - Constraints every subtask must hold (security, compatibility, flags default OFF).
 - Migrations: check the current head before adding one.
-- UI subtasks go through `.cursor/skills/design-local-review/SKILL.md` before deploy.
+- UI subtasks go through `.agents/skills/design-local-review/SKILL.md` before deploy.
 
 ## Copy-paste
 

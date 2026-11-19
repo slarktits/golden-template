@@ -17,13 +17,24 @@ description: >-
 
 You (the orchestrator) keep the judgement, planning, security review, and
 integration. You push mechanical, self-contained chunks down to a cheaper
-subagent via the `Task` tool. The subagent runs in an isolated context, does the
-grunt work (reading files, running commands, retrying), and returns only a clean
-summary. Your context never sees the intermediate noise.
+subagent. The subagent runs in an isolated context, does the grunt work
+(reading files, running commands, retrying), and returns only a clean summary.
+Your context never sees the intermediate noise.
+
+## Which agent
+
+| Agent | Tool | Model |
+| --- | --- | --- |
+| Cursor | `Task` | `composer-2.5-fast`, only if that slug is in the tool's model list |
+| Claude, OpenCode, Antigravity | that agent's subagent or task tool | the cheapest model it lists |
+
+Do not call `Task` or pass Cursor model slugs from Claude, OpenCode or Antigravity.
+The rest of this skill shows the Cursor `Task` shape. Other agents keep the same
+split and the same return contract, with their own tool.
 
 ## Default model
 
-Delegate with `model: composer-2.5-fast`.
+Cursor only. Delegate with `model: composer-2.5-fast`.
 
 Escalate only if the chunk needs more reasoning than pure mechanics (e.g. a
 non-trivial refactor across files following a pattern):

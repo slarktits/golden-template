@@ -8,7 +8,7 @@ You operate within a 3-layer architecture that separates concerns to maximize re
 
 - Implementation prompts in `docs/PROMPTS/PHASE_X/` define subtasks, goals, inputs, and acceptance criteria
 - Project rules provide conventions, tech stack, and domain context (`.cursor/rules/*.mdc`, starting with `project.mdc`)
-- Procedures live in skills (`.cursor/skills/*/SKILL.md`, `.agents/skills/*/SKILL.md`)
+- Procedures live in skills (`.agents/skills/*/SKILL.md`; `.claude/skills` is a symlink there)
 - Natural language instructions, like you'd give a mid-level developer
 
 **Layer 2: Orchestration (Decision making)**
@@ -57,8 +57,8 @@ Before implementing, search the codebase for similar patterns (graphify first wh
 ## Workflow
 
 - Work is organized as phases. Phase plan: `docs/PROMPTS/PHASE_X/README.md`; subtasks: `docs/PROMPTS/PHASE_X/X.Y_Name.md`; status: `docs/PROGRESS.md`; roadmap: `docs/DEVELOPMENT_PLAN.md`.
-- One subtask per run, in README order. Close every subtask with the report from `.cursor/skills/phase-task-completion/SKILL.md`.
-- New phase: follow `.cursor/skills/phase-planning/SKILL.md`.
+- One subtask per run, in README order. Close every subtask with the report from `.agents/skills/phase-task-completion/SKILL.md`.
+- New phase: follow `.agents/skills/phase-planning/SKILL.md`. After adding or removing a `.cursor/rules/*.mdc` file, run `make agents-sync`.
 
 ## Summary
 
