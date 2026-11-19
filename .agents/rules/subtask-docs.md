@@ -1,0 +1,34 @@
+---
+trigger: glob
+globs: "docs/PROMPTS/**,docs/ARCHITECTURE.md,docs/DEVELOPMENT_PLAN.md"
+description: "Phase and subtask docs are specifications, not code"
+---
+
+<!-- Generated from .cursor/rules/subtask-docs.mdc by scripts/sync_agent_config.py. Edit the source, then run `make agents-sync`. -->
+
+# Subtask Docs - Description Only, No Code
+
+When creating or editing subtask descriptions (`docs/PROMPTS/`, phase plans,
+architecture), output only the task specification, no implementation code.
+
+Include:
+- Short title and goal (Task / Goal).
+- What to implement: bullets, checklists, tables (endpoints, hooks, files, config keys).
+- Tools and commands.
+- Ordered steps.
+- Stack and technologies (libraries, versions, config names).
+- Best practices.
+- Structure: paths, folders, file and module names, no code bodies.
+- Dependencies (packages or services).
+- Constraints and notes (what to avoid, risks, references to other subtasks).
+- Tests and "Done when".
+
+Do not include:
+- Full code blocks or long snippets. A minimal example (one config line, a 2-3 line `.env` format) only when needed for clarity. Otherwise descriptions and signatures.
+
+Style:
+- No emojis, no decorative lines, no filler.
+- Short sentences; lists and tables instead of long paragraphs.
+- Reference another subtask or the phase README instead of repeating it.
+
+Format reference: `docs/PROMPTS/_TEMPLATE_PHASE/`.

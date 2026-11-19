@@ -101,5 +101,5 @@ iterate scenarios per variant so every variant is tested against every input.
 
 ## Coordination with browser-testing
 
-For verifying the deployed result, use `.cursor/skills/browser-testing/SKILL.md`.
+For verifying the deployed result, use `.agents/skills/browser-testing/SKILL.md`.
 This skill covers only the local pre-prod review loop.

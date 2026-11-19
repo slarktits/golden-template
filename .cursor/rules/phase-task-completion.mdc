@@ -12,4 +12,4 @@ instructions if anything must be run/built/migrated, (4) a PROGRESS.md update
 check, (5) a minimal English copy-paste prompt for the next step.
 
 The report is chat output, never a file. Full workflow:
-`.cursor/skills/phase-task-completion/SKILL.md`.
+`.agents/skills/phase-task-completion/SKILL.md`.

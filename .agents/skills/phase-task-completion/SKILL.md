@@ -57,7 +57,7 @@ columns), list them. Skip this block entirely if nothing notable was added.
 
 If the subtask requires anything to be run or applied (new build, migration,
 deploy/rollout, infrastructure apply, secret sync, smoke test), do NOT dump a
-script. Follow `.cursor/skills/manual-execution-stepwise/SKILL.md`:
+script. Follow `.agents/skills/manual-execution-stepwise/SKILL.md`:
 
 - Optionally post a short numbered plan of the upcoming steps first.
 - Then emit ONE step, state the expected output, and STOP.

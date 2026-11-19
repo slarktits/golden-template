@@ -1,0 +1,79 @@
+---
+trigger: always_on
+description: "Core project rules - overview, stack, conventions, docs map, phases, AI rules"
+---
+
+<!-- Generated from .cursor/rules/project.mdc by scripts/sync_agent_config.py. Edit the source, then run `make agents-sync`. -->
+
+# Project Rules
+
+Fill the sections marked TODO when the project starts. Keep this file short:
+domain detail goes into per-file rules in `.cursor/rules/*.mdc` with `globs`,
+procedures go into `.agents/skills/*/SKILL.md`.
+
+Agent config: `.cursor/rules/*.mdc` is the source for rules. `make agents-sync`
+regenerates `.agents/rules/` (Antigravity, OpenCode) and `.claude/rules/`
+(Claude Code). Do not edit the generated files. Skills live only in
+`.agents/skills` (`.claude/skills` is a symlink there; do not add
+`.cursor/skills`). MCP configs commit no secrets; `CONTEXT7_API_KEY` comes from
+the environment. Cursor: `.cursor/mcp.json`. Claude Code: `.mcp.json` (enabled
+in `.claude/settings.json`). OpenCode: `.opencode/opencode.jsonc`. Antigravity:
+`.agents/mcp_config.json`. Shared browser MCP is `browse` (`browse` on PATH).
+
+## Project Overview
+TODO: one paragraph - what the product does, for whom, main domain terms.
+Repo: TODO (host, remote name). Hosting: TODO.
+
+## Tech Stack
+TODO: languages and versions, frameworks, datastores, infra, deploy targets.
+List apps/services as `path/ -> domain or purpose (auth)`.
+
+## Commands
+TODO: install, test, lint, typecheck, build, run locally, per app/service.
+
+## Guidelines
+- Strict typing in every language that supports it. Type hints / strict mode required.
+- Naming: follow the language convention; DB tables snake_case plural; env vars SCREAMING_SNAKE.
+- API (if any): versioned prefix, one error shape for the whole API, documented in `docs/API_ENDPOINTS.md`.
+- Git: branches `feature/`, `fix/`, `refactor/`, `docs/`. Conventional Commits: `feat(scope): description`.
+- Secrets only in a secret manager or local untracked `.env`. Never hardcode, never commit, never log.
+
+## Docs
+| File | Purpose |
+|---|---|
+| `docs/DEVELOPMENT_PLAN.md` | Roadmap, one line per phase with status |
+| `docs/PROGRESS.md` | Subtask checklist, updated after every subtask |
+| `docs/ARCHITECTURE.md` | System design and decisions |
+| `docs/CONFIGURATION.md` | Environments, env vars, resource IDs |
+| `docs/PROMPTS/` | Phase folders with subtask specs, see `docs/PROMPTS/README.md` |
+
+Create `docs/API_ENDPOINTS.md`, `docs/DEPLOYMENT.md`, `docs/RUNBOOKS/` when the project needs them.
+
+## Domain Context
+Domain rules auto-load via `.cursor/rules/<domain>.mdc` with `globs` on the relevant paths.
+TODO: list them here as `<Domain>: .cursor/rules/<domain>.mdc (scope)`.
+
+## Completed Phases
+TODO: `N: Name (key facts, YYYY-MM-DD)` per completed phase.
+
+## Pending Phases
+TODO: phase numbers in priority order. Full plans: `docs/PROMPTS/PHASE_X/README.md`.
+Each active phase gets `.cursor/rules/phase-N-<slug>.mdc` (see `.agents/skills/phase-planning/SKILL.md`), then `make agents-sync`.
+
+## AI Rules
+1. Context7 MCP for library docs before implementing or writing setup steps.
+2. Follow existing code patterns. Search for a similar implementation before adding one.
+3. Write tests for new functionality and run them before reporting done.
+4. Update `docs/PROGRESS.md` after completing a subtask.
+5. Infrastructure before code: provision what the code depends on first.
+6. Production-ready code only. No placeholders, no TODO stubs in delivered code.
+7. No emojis in code, docs, rules or commit messages.
+8. Never wait with `sleep`; poll status with the provider's CLI.
+9. UI changes: build variants locally, user picks, then ship. See `.agents/skills/design-local-review/SKILL.md`.
+10. Manual steps for the user: exactly one step per turn, wait for "готово" / "ok" / "done". See `.agents/skills/manual-execution-stepwise/SKILL.md`.
+11. Subtask docs are specs, not code. See `.cursor/rules/subtask-docs.mdc`.
+12. Ask before creating or overwriting phase prompts unless explicitly told to.
+
+## Subtasks
+See `docs/PROMPTS/` for implementation prompts, `docs/DEVELOPMENT_PLAN.md` for the roadmap, `docs/PROGRESS.md` for status.
+Request: Implement subtask based on @docs/PROMPTS/PHASE_X/X.X_Name.md

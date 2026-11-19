@@ -9,6 +9,11 @@ description: >-
 
 # Browser-Based E2E Testing
 
+Cursor uses the `browser_*` tools below. Claude, OpenCode and Antigravity use
+the repo `browse` MCP (`browse` on PATH) for the same steps: open, snapshot,
+act, check the console. In Orca, the `orca` browser is the fallback when
+`browse` is missing.
+
 ## When to use
 
 - logging into a deployed or local app
